@@ -15,10 +15,17 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import Button from '@material-ui/core/Button';
+import { withRouter} from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   grow: {
     flexGrow: 1,
+  },
+  toolbar: {
+    minHeight: '2vh'
+  },
+  margin: {
+    margin: theme.spacing(0),
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -80,7 +87,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function PrimarySearchAppBar() {
+function PrimarySearchAppBar(props) {
+  const {history} = props;
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -132,23 +140,24 @@ export default function PrimarySearchAppBar() {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      <MenuItem>
-          <Button color="inherit">Categories</Button>
+      {/* onClick={() => { func1(); func2();}} */}
+      <MenuItem  onClick={(event)=>{history.push('./'); handleMenuClose()}}>
+          <Button color="inherit" >Categories</Button>
       </MenuItem>
-      <MenuItem>
-          <Button color="inherit">Treading</Button>
+      <MenuItem  onClick={()=>{history.push('./treading'); handleMenuClose()}}>
+          <Button color="inherit" >Treading</Button>
       </MenuItem>
-      <MenuItem>
-          <Button color="inherit">New</Button>
+      <MenuItem onClick={()=>{history.push('./newJobs'); handleMenuClose()}}>
+          <Button color="inherit" >New</Button>
       </MenuItem>
-      <MenuItem>
-          <Button color="inherit">Unread</Button>
+      <MenuItem onClick={()=>{history.push('./unread'); handleMenuClose()}}>
+          <Button color="inherit" >Unread</Button>
       </MenuItem>
-      <MenuItem>
-          <Button color="inherit">Login</Button>
+      <MenuItem onClick={()=>{history.push('./login'); handleMenuClose()}}>
+          <Button color="inherit" >Login</Button>
       </MenuItem>
-      <MenuItem>
-          <Button color="inherit" backgroundColor="blue">Register</Button>
+      <MenuItem onClick={handleMenuClose}>
+          <Button color="inherit"  backgroundColor="blue">Register</Button>
       </MenuItem>
       <MenuItem>
         <IconButton aria-label="show 11 new notifications" color="inherit">
@@ -174,8 +183,8 @@ export default function PrimarySearchAppBar() {
 
   return (
     <div className={classes.grow}>
-      <AppBar color="inherit" position="static">
-        <Toolbar >
+      <AppBar style={{ height:'9vh',boxSizing:'border-box',margin:"0px",padding:'0px' }} color="inherit" position="static">
+        <Toolbar variant="regular" className={classes.toolbar}>
           {/* <IconButton
             edge="start"
             className={classes.menuButton}
@@ -189,10 +198,10 @@ export default function PrimarySearchAppBar() {
           </Typography>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-          <Button>Categories</Button>
-          <Button>Treading</Button>
-          <Button>New</Button>
-          <Button>Unread</Button>
+          <Button onClick={()=>history.push('./')}>Categories</Button>
+          <Button onClick={()=>history.push('./treading')}>Treading</Button>
+          <Button onClick={()=>history.push('./newJobs')}>New</Button>
+          <Button onClick={()=>history.push('./unread')}>Unread</Button>
           </div>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
@@ -214,8 +223,7 @@ export default function PrimarySearchAppBar() {
                 <MailIcon />
               </Badge>
             </IconButton> */}
-            <Button variant="contained">Login</Button>
-            <Button variant="outlined">Register</Button>
+            
             <IconButton aria-label="show 17 new notifications" color="inherit">
               <Badge badgeContent={17} color="secondary">
                 <NotificationsIcon />
@@ -231,6 +239,8 @@ export default function PrimarySearchAppBar() {
             >
               <AccountCircle />
             </IconButton>
+            <Button onClick={()=>history.push('./login')} variant="contained" style={{ borderRadius:"0px",marginLeft:'10px' }} color="primary" size="small" className={classes.margin}>Login </Button>
+            <Button variant="outlined" style={{ borderRadius:"0px" }} size="small" className={classes.margin}>Register</Button>
           </div>
           <div className={classes.sectionMobile}>
             <IconButton
@@ -250,3 +260,4 @@ export default function PrimarySearchAppBar() {
     </div>
   );
 }
+export default withRouter(PrimarySearchAppBar);

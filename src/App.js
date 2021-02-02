@@ -1,26 +1,28 @@
 import React from 'react';
 import './App.css';
 import PrimarySearchAppBar from './NavBar'
-//import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Categories from './Compontes/Categories'
+import Treading from './Compontes/Treading'
+import New from './Compontes/New'
+import Unread from './Compontes/Unread'
+import Login from './Compontes/Login'
 
 function App() {
   return (
-    <div className="App">
-      <PrimarySearchAppBar />
-      <h1>hello</h1>
+    <div className="App"> 
+    <Router>
+      <PrimarySearchAppBar /> 
+      <Switch>
+        <Route path='/' exact component={Categories} />
+        <Route path='/treading' component={Treading} />
+        <Route path='/newJobs' component={New} />
+        <Route path='/unread' component={Unread} />
+        {/* <Route path='/sign-up' component={SignUp} /> */}
+        <Route path='/login' component={Login} />
+      </Switch>
+    </Router>
     </div>
-    // <Router>
-    //   <Navbar />
-    //   <Switch>
-    //     <Route path='/' exact component={Home} />
-    //     <Route path='/services' component={Services} />
-    //     <Route path='/products' component={Products} />
-    //     <Route path='/contact-us' component={ContactUs} />
-    //     <Route path='/sign-up' component={SignUp} />
-    //     <Route path='/marketing' component={Marketing} />
-    //     <Route path='/consulting' component={Consulting} />
-    //   </Switch>
-    // </Router>
   );
 }
 
