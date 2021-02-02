@@ -240,7 +240,7 @@ function PrimarySearchAppBar(props) {
               <AccountCircle />
             </IconButton>
             <Button onClick={()=>history.push('./login')} variant="contained" style={{ borderRadius:"0px",marginLeft:'10px' }} color="primary" size="small" className={classes.margin}>Login </Button>
-            <Button variant="outlined" style={{ borderRadius:"0px" }} size="small" className={classes.margin}>Register</Button>
+            <Button variant="outlined" style={{ borderRadius:"0px",border:"0px" }} size="small" className={classes.margin}>Register</Button>
           </div>
           <div className={classes.sectionMobile}>
             <IconButton
