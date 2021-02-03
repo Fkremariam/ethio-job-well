@@ -6,7 +6,7 @@ import Categories from './Compontes/Categories'
 import Treading from './Compontes/Treading'
 import New from './Compontes/New'
 import Unread from './Compontes/Unread'
-import Login from './Compontes/Login'
+import Popup from './Compontes/PopupLogin'
 
 
 function App() {
@@ -16,11 +16,11 @@ function App() {
       <PrimarySearchAppBar /> 
       <Switch>
         <Route path='/' exact component={Categories} />
-        <Route path='/treading' component={Treading} />
-        <Route path='/newJobs' component={New} />
-        <Route path='/unread' component={Unread} />
+        <Route path='/treading' exact component={Treading} />
+        <Route path='/newJobs' exact component={New} />
+        <Route path='/unread' exact component={Unread} />
         {/* <Route path='/sign-up' component={SignUp} /> */}
-        <Route path='/login' component={Login} />
+        <Route path='/' exact component={Popup} />
       </Switch>
     </Router>
     </div>

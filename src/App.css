@@ -7,7 +7,27 @@
 body{
     min-height:100vh;
   background:#eee;
-  
+  overflow: hidden;
+}
+.loginForms{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.userNameLogin{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.buttonLogAndRegister{
+    display: flex;
+    justify-content: end;
+}
+.passwordLogin{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 .categories{
     display: flex;
@@ -38,4 +58,13 @@ body{
     .searchForCategorie{
         border-style: none;
     }
+    .loginForms{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 60%;
+}
+
+
 }

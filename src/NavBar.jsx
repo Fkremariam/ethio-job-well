@@ -1,5 +1,7 @@
 import React from 'react';
 import './App.css';
+import jobfinderlogo from './assets/jobFinderLogo.jpg';
+import Popup from './Compontes/PopupLogin';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -13,9 +15,9 @@ import Menu from '@material-ui/core/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 // import MailIcon from '@material-ui/icons/Mail';
+import Button from '@material-ui/core/Button';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
-import Button from '@material-ui/core/Button';
 import { withRouter} from 'react-router-dom';
 import Link from '@material-ui/core/Link';
 
@@ -27,12 +29,12 @@ const useStyles = makeStyles((theme) => ({
     minHeight: '2vh'
   },
   margin: {
-    margin: theme.spacing(0),
+    margin: theme.spacing(2),
   },
   menuButton: {
     marginRight: theme.spacing(2),
   },
-  title: {
+  logo: {
     display: 'none',
     [theme.breakpoints.up('sm')]: {
       display: 'block',
@@ -94,6 +96,7 @@ function PrimarySearchAppBar(props) {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+  const [openPopup,setOpenPopup] = React.useState(false);
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -155,7 +158,7 @@ function PrimarySearchAppBar(props) {
       <MenuItem onClick={()=>{history.push('./unread'); handleMenuClose()}}>
           <Link color="inherit" underline='none' component="button" variant="body2">Unread</Link>
       </MenuItem>
-      <MenuItem onClick={()=>{history.push('./login'); handleMenuClose()}}>
+      <MenuItem onClick={()=>{setOpenPopup(true); handleMenuClose()}}>
           <Link color="inherit" underline='none' component="button" variant="body2">Login</Link>
       </MenuItem>
       <MenuItem onClick={handleMenuClose}>
@@ -196,7 +199,7 @@ function PrimarySearchAppBar(props) {
             <MenuIcon />
           </IconButton> */}
           <Typography className={classes.title} variant="h6" noWrap>
-            Material-UI
+            <img src={jobfinderlogo} style={{ width:"60px",height:'60px',borderRadius:'50%',marginTop:'25px' }} alt='imageLogo'/>
           </Typography>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
@@ -230,7 +233,7 @@ function PrimarySearchAppBar(props) {
                 <MailIcon />
               </Badge>
             </IconButton> */}
-            
+            <div className='buttonLogAndRegister'>
             <IconButton aria-label="show 17 new notifications" color="inherit">
               <Badge badgeContent={17} color="secondary">
                 <NotificationsIcon />
@@ -243,11 +246,14 @@ function PrimarySearchAppBar(props) {
               aria-haspopup="true"
               onClick={handleProfileMenuOpen}
               color="inherit"
+              style={{ margin:'0px 1px 0px 1px' }}
             >
               <AccountCircle />
             </IconButton>
-            {/* <Button onClick={()=>history.push('./login')} variant="contained" style={{ borderRadius:"0px",marginLeft:'10px' }} color="primary" size="small" className={classes.margin}>Login </Button>
-            <Button variant="outlined" style={{ borderRadius:"0px",border:'0px' }} size="small" className={classes.margin}>Register</Button> */}
+            
+            <Button onClick={()=>{history.push('./Popup'); setOpenPopup(true)}} variant="outlined" style={{ margin:'6px 1px 6px 4px' }} color="primary" size="small" className={classes.margin}>Login </Button>
+            <Button variant="contained" style={{ margin:'6px 0px 6px 1px' }} size="small" color="primary">Register</Button>
+          </div>
           </div>
           <div className={classes.sectionMobile}>
             <IconButton
@@ -264,6 +270,12 @@ function PrimarySearchAppBar(props) {
       </AppBar>
       {renderMobileMenu}
       {renderMenu}
+    <Popup
+    openPopup = {openPopup}
+    setOpenPopup = {setOpenPopup}
+    >
+
+    </Popup>
     </div>
   );
 }
