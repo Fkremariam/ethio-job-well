@@ -1,4 +1,5 @@
 import React from 'react';
+import './App.css';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -16,6 +17,7 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import Button from '@material-ui/core/Button';
 import { withRouter} from 'react-router-dom';
+import Link from '@material-ui/core/Link';
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -142,22 +144,22 @@ function PrimarySearchAppBar(props) {
     >
       {/* onClick={() => { func1(); func2();}} */}
       <MenuItem  onClick={(event)=>{history.push('./'); handleMenuClose()}}>
-          <Button color="inherit" >Categories</Button>
+          <Link color="inherit" underline='none' component="button" variant="body2">Categories</Link>
       </MenuItem>
       <MenuItem  onClick={()=>{history.push('./treading'); handleMenuClose()}}>
-          <Button color="inherit" >Treading</Button>
+          <Link color="inherit" underline='none' component="button" variant="body2">Treading</Link>
       </MenuItem>
       <MenuItem onClick={()=>{history.push('./newJobs'); handleMenuClose()}}>
-          <Button color="inherit" >New</Button>
+          <Link color="inherit" underline='none' component="button" variant="body2">New</Link>
       </MenuItem>
       <MenuItem onClick={()=>{history.push('./unread'); handleMenuClose()}}>
-          <Button color="inherit" >Unread</Button>
+          <Link color="inherit" underline='none' component="button" variant="body2">Unread</Link>
       </MenuItem>
       <MenuItem onClick={()=>{history.push('./login'); handleMenuClose()}}>
-          <Button color="inherit" >Login</Button>
+          <Link color="inherit" underline='none' component="button" variant="body2">Login</Link>
       </MenuItem>
       <MenuItem onClick={handleMenuClose}>
-          <Button color="inherit"  backgroundColor="blue">Register</Button>
+          <Link color="inherit" underline='none'  backgroundColor="blue" component="button" variant="body2">Register</Link>
       </MenuItem>
       <MenuItem>
         <IconButton aria-label="show 11 new notifications" color="inherit">
@@ -182,9 +184,9 @@ function PrimarySearchAppBar(props) {
   );
 
   return (
-    <div className={classes.grow}>
-      <AppBar elevation={0} style={{ height:'9vh',borderBottom:' 1px solid  rgb(151, 150, 150)' }} color="inherit" position="static">
-        <Toolbar variant="regular" className={classes.toolbar}>
+    <div className={classes.grow} style={{boxShadow:'0px 0px 2px 0px rgb(206, 204, 204)' }} >
+      <AppBar elevation={0} style={{ height:'10vh' }} position="static" variant="elevation" color='inherit'>
+        <Toolbar variant="regular" className={classes.toolbar} style={{ height:'15vh' }}>
           {/* <IconButton
             edge="start"
             className={classes.menuButton}
@@ -198,12 +200,16 @@ function PrimarySearchAppBar(props) {
           </Typography>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-          <Button onClick={()=>history.push('./')}>Categories</Button>
-          <Button onClick={()=>history.push('./treading')}>Treading</Button>
-          <Button onClick={()=>history.push('./newJobs')}>New</Button>
-          <Button onClick={()=>history.push('./unread')}>Unread</Button>
+          
+          <Link color="inherit" underline='none' style={{  margin: '20px 20px 20px 20px' }} component="button" variant="body2" onClick={()=>history.push('./')}>Categories</Link>
+          <Link color="inherit" underline='none' style={{  margin: '20px 20px 20px 20px' }} component="button" variant="body2" onClick={()=>history.push('./treading')}>Treading</Link>
+          <Link color="inherit" underline='none' style={{  margin: '20px 20px 20px 20px' }} component="button" variant="body2" onClick={()=>history.push('./newJobs')}>New</Link>
+          <Link color="inherit" underline='none' style={{  margin: '20px 20px 20px 20px' }} component="button" variant="body2" onClick={()=>history.push('./unread')}>Unread</Link>
+          
           </div>
-          <div className={classes.search}>
+          
+          <div className={classes.search} style={{ width:'350px' }}>
+            <div className='search'>
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
@@ -215,6 +221,7 @@ function PrimarySearchAppBar(props) {
               }}
               inputProps={{ 'aria-label': 'search' }}
             />
+          </div>
           </div>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
@@ -239,8 +246,8 @@ function PrimarySearchAppBar(props) {
             >
               <AccountCircle />
             </IconButton>
-            <Button onClick={()=>history.push('./login')} variant="contained" style={{ borderRadius:"0px",marginLeft:'10px' }} color="primary" size="small" className={classes.margin}>Login </Button>
-            <Button variant="outlined" style={{ borderRadius:"0px",border:'0px' }} size="small" className={classes.margin}>Register</Button>
+            {/* <Button onClick={()=>history.push('./login')} variant="contained" style={{ borderRadius:"0px",marginLeft:'10px' }} color="primary" size="small" className={classes.margin}>Login </Button>
+            <Button variant="outlined" style={{ borderRadius:"0px",border:'0px' }} size="small" className={classes.margin}>Register</Button> */}
           </div>
           <div className={classes.sectionMobile}>
             <IconButton

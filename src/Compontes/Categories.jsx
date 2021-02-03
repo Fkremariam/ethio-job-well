@@ -64,19 +64,21 @@ function Categories() {
     return(
         <div>    
             <div className="searchForCategorie">
-                <h3>Categories</h3>
-                <div className={classes.search}>
-            <div className={classes.searchIcon}>
+                <h3 style={{ marginLeft:'15px' }}>Categories</h3>
+                <div className={classes.search} style={{ paddig:'8px 8px 8px 8px',margin:'10px' }}>
+          <div className='search' >
+            <div className={classes.searchIcon} >
               <SearchIcon />
             </div>
                 <InputBase
-              placeholder="Search…"
+              placeholder="Search Categories"
               classes={{
                 root: classes.inputRoot,
                 input: classes.inputInput,
               }}
               inputProps={{ 'aria-label': 'search' }}
             />
+            </div>
           </div>
             </div>
                 
