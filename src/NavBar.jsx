@@ -1,21 +1,21 @@
 import React from 'react';
 import './App.css';
-import jobfinderlogo from './assets/jobFinderLogo.jpg';
+import recipies from './assets/recipies.png';
 import Popup from './Compontes/PopupLogin';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import InputBase from '@material-ui/core/InputBase';
+// import Typography from '@material-ui/core/Typography';
+// import InputBase from '@material-ui/core/InputBase';
 import Badge from '@material-ui/core/Badge';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 //import MenuIcon from '@material-ui/icons/Menu';
-import SearchIcon from '@material-ui/icons/Search';
+// import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 // import MailIcon from '@material-ui/icons/Mail';
-import Button from '@material-ui/core/Button';
+// import Button from '@material-ui/core/Button';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import { withRouter} from 'react-router-dom';
@@ -133,7 +133,7 @@ function PrimarySearchAppBar(props) {
       <MenuItem onClick={handleMenuClose}>My account</MenuItem>
     </Menu>
   );
-
+<marquee><img src={recipies} style={{ marginTop:'25px' }} alt='imageLogo'/> </marquee>
   const mobileMenuId = 'primary-search-account-menu-mobile';
   const renderMobileMenu = (
     <Menu
@@ -198,20 +198,21 @@ function PrimarySearchAppBar(props) {
           >
             <MenuIcon />
           </IconButton> */}
-          <Typography className={classes.title} variant="h6" noWrap>
-            <img src={jobfinderlogo} style={{ width:"60px",height:'60px',borderRadius:'50%',marginTop:'25px' }} alt='imageLogo'/>
-          </Typography>
+          {/* <Typography className={classes.logo} variant="h6" noWrap>
+            <img src={recipies} style={{ width:"60px",height:'60px',borderRadius:'50%',marginTop:'25px' }} alt='imageLogo'/>
+          </Typography> */}
           <div className={classes.grow} />
-          <div className={classes.sectionDesktop}>
+          <div className={classes.sectionDesktop} style={{ width:"60%" }}>
           
-          <Link color="inherit" underline='none' style={{  margin: '20px 20px 20px 20px' }} component="button" variant="body2" onClick={()=>history.push('./')}>Categories</Link>
-          <Link color="inherit" underline='none' style={{  margin: '20px 20px 20px 20px' }} component="button" variant="body2" onClick={()=>history.push('./treading')}>Treading</Link>
+          <marquee><img src={recipies} style={{ marginTop:'25px' }} alt='imageLogo'/> </marquee>
+          {/* <Link color="inherit" underline='none' style={{  margin: '20px 20px 20px 20px' }} component="button" variant="body2" onClick={()=>history.push('./')}>Recipies</Link> */}
+          {/* <Link color="inherit" underline='none' style={{  margin: '20px 20px 20px 20px' }} component="button" variant="body2" onClick={()=>history.push('./treading')}>Treading</Link>
           <Link color="inherit" underline='none' style={{  margin: '20px 20px 20px 20px' }} component="button" variant="body2" onClick={()=>history.push('./newJobs')}>New</Link>
-          <Link color="inherit" underline='none' style={{  margin: '20px 20px 20px 20px' }} component="button" variant="body2" onClick={()=>history.push('./unread')}>Unread</Link>
+          <Link color="inherit" underline='none' style={{  margin: '20px 20px 20px 20px' }} component="button" variant="body2" onClick={()=>history.push('./unread')}>Unread</Link> */}
           
           </div>
           
-          <div className={classes.search} style={{ width:'350px' }}>
+          {/* <div className={classes.search} style={{ width:'350px' }}>
             <div className='search'>
             <div className={classes.searchIcon}>
               <SearchIcon />
@@ -225,7 +226,7 @@ function PrimarySearchAppBar(props) {
               inputProps={{ 'aria-label': 'search' }}
             />
           </div>
-          </div>
+          </div> */}
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
             {/* <IconButton aria-label="show 4 new mails" color="inherit">
@@ -233,7 +234,7 @@ function PrimarySearchAppBar(props) {
                 <MailIcon />
               </Badge>
             </IconButton> */}
-            <div className='buttonLogAndRegister'>
+            <div className='buttonLogAndRegister' >
             <IconButton aria-label="show 17 new notifications" color="inherit">
               <Badge badgeContent={17} color="secondary">
                 <NotificationsIcon />
@@ -251,8 +252,8 @@ function PrimarySearchAppBar(props) {
               <AccountCircle />
             </IconButton>
             
-            <Button onClick={()=>{history.push('./Popup'); setOpenPopup(true)}} variant="outlined" style={{ margin:'6px 1px 6px 4px' }} color="primary" size="small" className={classes.margin}>Login </Button>
-            <Button variant="contained" style={{ margin:'6px 0px 6px 1px' }} size="small" color="primary">Register</Button>
+            {/* <Button onClick={()=>{history.push('./Popup'); setOpenPopup(true)}} variant="outlined" style={{ margin:'6px 1px 6px 4px' }} color="primary" size="small" className={classes.margin}>Login </Button>
+            <Button variant="contained" style={{ margin:'6px 0px 6px 1px' }} size="small" color="primary">Register</Button> */}
           </div>
           </div>
           <div className={classes.sectionMobile}>

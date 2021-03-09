@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useEffect,useState} from 'react';
 import '../App.css';
 import RecipeReviewCard from './CategorieContents';
 import SearchIcon from '@material-ui/icons/Search';
@@ -59,6 +59,36 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 function Categories() {
+
+  const APP_ID = "f5e57e8e";
+  const APP_KEY = "4d4cd7d271f97729f9ce87c2fe8b45a0";
+  const [recipes, setRecipes] = useState([]);
+  const [search,setSearch] = useState("");
+  const [query,setQuery] = useState('chicken');
+  useEffect(()=>{
+      getRecipe();
+  },[query]);
+
+  const getRecipe = async()=>{
+    const response = await fetch(
+      `https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}`
+      );
+    const data = await response.json();
+    console.log(data);
+    setRecipes(data.hits);
+  }
+ 
+  const updateSearch = e =>{
+    setSearch(e.target.value);
+    // console.log(search); 
+  }
+
+  const getSearch = e => {
+    e.preventDefault();
+    setQuery(search);
+    setSearch('');
+  }
+
     const classes = useStyles();
 
     return(
@@ -67,25 +97,33 @@ function Categories() {
                 <h3 style={{ marginLeft:'15px' }}>Categories</h3>
                 <div className={classes.search} style={{ paddig:'8px 8px 8px 8px',margin:'10px' }}>
           <div className='search' >
-            <div className={classes.searchIcon} >
-              <SearchIcon />
-            </div>
-                <InputBase
-              placeholder="Search Categories"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ 'aria-label': 'search' }}
-            />
-            </div>
+          
+            <form onSubmit={getSearch} className="search-form">
+              <input
+                className="search-bar"
+                type="text"
+                value = {search}
+                onChange={updateSearch}
+              />
+              <button className="search-button" type="submit">
+                Search
+              </button>
+            </form>
+          </div>
           </div>
             </div>
                 
-            <div className="categories">
-                <RecipeReviewCard/>
-                <RecipeReviewCard/>
-                <RecipeReviewCard/>
+            <div className="recipes">
+                {recipes.map(recipe => (
+                    <RecipeReviewCard
+                      key={recipe.recipe.label}
+                      title={recipe.recipe.label}
+                      calories={recipe.recipe.calories}
+                      image={recipe.recipe.image}
+                      ingredients={recipe.recipe.ingredients}
+                    />
+                ))}
+                
             </div>
         </div>
     );
